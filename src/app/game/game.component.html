@@ -1,0 +1,25 @@
+<ng-container *ngFor="let egal of currentDisplay;index as i">
+  <div class="dim">
+    <button *ngFor="let ebene of dim[i+2]" (click)="currentDisplay[i] = ebene"
+            [class]="currentDisplay[i] == ebene?'aktiv':'inaktiv'">{{ebene + 1}}</button>
+  </div>
+</ng-container>
+<mat-slide-toggle [(ngModel)]="flagge"> Flagge</mat-slide-toggle><br><br>
+
+<ng-container *ngFor="let y of dim[1]">
+  <ng-container *ngFor="let x of dim[0]">
+    <button [class]="current[getFeldIndex(combineArrays(x, y), dimCount)] == 'verdeckt'?'verdeckt':'offen'"
+            (contextmenu)="open(combineArrays(x,y),true,$event)"
+            (click)="open(combineArrays(x,y),false, $event)">
+      <mat-icon *ngIf="current[getFeldIndex(combineArrays(x, y), dimCount)] == 'flagge'">flag</mat-icon>
+      <span
+        *ngIf="current[getFeldIndex(combineArrays(x, y), dimCount)] !== 'flagge'"> {{current[getFeldIndex(combineArrays(x, y), dimCount)] }}</span>
+    </button>
+  </ng-container>
+  <br>
+</ng-container>
+<br>
+<p>Mienen gefunden: {{progress.flaged}}</p>
+<p>Mienen insgesamt: {{progress.alle}}</p>
+<p>Verdeckte Felder: {{todo}}</p>
+

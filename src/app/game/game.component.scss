@@ -1,0 +1,47 @@
+.aktiv {
+  background: green;
+}
+
+.inaktiv {
+  background: gray;
+}
+
+.verdeckt {
+  background:#B0BEC5;
+  color:#B0BEC5;
+}
+.offen{
+  background: transparent;
+  color:white;
+
+}
+
+button {
+  width: 2cm;
+  aspect-ratio: 1;
+  border: 1px solid gray;
+  overflow: hidden;
+}
+
+mat-icon{
+  padding:0;
+  margin:0;
+  vertical-align: middle;
+}
+
+.dim {
+  margin-bottom: 1em;
+  button {
+    border: none;
+  }
+
+  button:last-child {
+    border-radius: 0 16px 16px 0;
+
+  }
+
+  button:first-child {
+    border-radius: 16px 0 0 16px;
+  }
+
+}
