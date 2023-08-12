@@ -81,16 +81,23 @@ export class GameComponent {
         alert("du hast verloren");
         location.reload()
       }
-    } else if (this.current[this.getFeldIndex(ort, this.dimCount)] == "verdeckt")
+    } else if (this.current[this.getFeldIndex(ort, this.dimCount)] == "verdeckt") {
       this.current[this.getFeldIndex(ort, this.dimCount)] = this.minesCount(ort, this.dimCount, this.original)
-    else {
+    } else {
       console.error("huch")
+      return
     }
     this.progress = this.mineStat()
     if (this.todo == 0) this.win()
 
-    if (invert) this.flagge = !this.flagge
 
+    if (invert) this.flagge = !this.flagge
+    if (this.minesCount(ort, this.dimCount, this.original) == 0) {
+      for (let n of this.neighbours(ort, this.dimCount)) {
+        if (this.current[this.getFeldIndex(n, this.dimCount)] == "verdeckt")
+          this.open(n, invert, e)
+      }
+    }
   }
 
   win() {

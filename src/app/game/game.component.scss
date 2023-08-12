@@ -28,6 +28,11 @@ mat-icon{
   margin:0;
   vertical-align: middle;
 }
+.line{
+  display:flex;
+  white-space: nowrap;
+  overflow: auto;
+}
 
 .dim {
   margin-bottom: 1em;
